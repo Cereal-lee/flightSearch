@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ログイン画面</title>
+	<th:block th:replace="~{fragments/header :: layout}"></th:block>
+</head>
+
+<body class="bg-secondary-subtle">
+	<div class="container py-5">
+		<th:block th:replace="~{fragments/layout :: header(loginPage=true)}"></th:block>
+
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="card shadow-sm">
+					<div class="card-body">
+						<h2 class="card-title text-center mb-4">ログイン</h2>
+						<div th:if="${param.error}" th:text="${param.errorMsg}">
+							Invalid username and password.</div>
+						<div th:if="${param.message}" class="alert alert-info" role="alert" th:text="${param.message}">
+						</div>
+
+						<div th:if="${errorMsg}" class="alert alert-danger" role="alert" th:text="${errorMsg}"></div>
+						<form action="#" th:action="@{/login}" method="post" th:object="${loginForm}">
+							<div class="mb-3">
+								<label for="email" class="form-label">メールアドレス</label> <input type="text"
+									class="form-control" id="email" th:field="*{email}">
+								<div class="form-text text-danger" th:if="${#fields.hasErrors('email')}"
+									th:errors="*{email}"></div>
+							</div>
+							<div class="mb-3">
+								<label for="password" class="form-label">パスワード</label> <input type="password"
+									class="form-control" id="password" th:field="*{password}">
+								<div class="form-text text-danger" th:if="${#fields.hasErrors('password')}"
+									th:errors="*{password}"></div>
+							</div>
+							<div class="d-grid gap-2">
+								<button type="submit" class="btn btn-secondary">ログイン</button>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div>
+					<a class="link-underline-secondary" th:href="@{/signup}">会員登録はこちら</a>
+				</div>
+			</div>
+		</div>
+
+		<th:block th:replace="~{fragments/layout :: footer}"></th:block>
+
+	</div>
+</body>
+<script>
+	console.log("loginView");
+</script>
+
+</html>

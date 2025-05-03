@@ -20,7 +20,8 @@ dependencies {
     api(libs.org.springframework.boot.spring.boot.starter.web)
     api(libs.org.thymeleaf.extras.thymeleaf.extras.springsecurity6)
     api(libs.org.springframework.boot.spring.boot.starter.data.mongodb)
-    api(libs.org.projectlombok.lombok)
+    compileOnly(libs.org.projectlombok.lombok)
+    annotationProcessor(libs.org.projectlombok.lombok)
     api(libs.com.amadeus.amadeus.java)
     api(libs.com.querydsl.querydsl.jpa)
     api(libs.com.github.dozermapper.dozer.core)
@@ -31,7 +32,7 @@ dependencies {
 group = "com.tomato"
 version = "0.0.1-SNAPSHOT"
 description = "Search-Flight-Specials"
-java.sourceCompatibility = JavaVersion.VERSION_1_8
+java.sourceCompatibility = JavaVersion.VERSION_21
 
 publishing {
     publications.create<MavenPublication>("maven") {
